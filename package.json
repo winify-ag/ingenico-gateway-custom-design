@@ -1,0 +1,46 @@
+{
+  "name": "ingenico-gateway-custom-design",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "start": "gulp serve",
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "browser-sync": "^2.2.1",
+    "cssnano": "^3.10.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-cache": "^0.4.2",
+    "gulp-eslint": "^3.0.0",
+    "gulp-filter": "^4.0.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-plumber": "^1.0.1",
+    "gulp-postcss": "^7.0.0",
+    "gulp-sass": "^3.0.0",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^2.2.0",
+    "gulp-useref": "^3.0.0",
+    "postcss-uncss": "^0.16.1",
+    "uncss": "^0.16.2",
+    "run-sequence": "^1.2.2"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "browser": true
+    },
+    "rules": {
+      "quotes": [
+        2,
+        "single"
+      ]
+    }
+  }
+}

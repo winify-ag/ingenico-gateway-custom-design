@@ -1,0 +1,305 @@
+@font-face { font-family: TheSans; src: url("VWAGTheSans-Regular.woff") format("woff"); }
+@font-face { font-family: TheSansBold; src: url("VWAGTheSans-Bold.woff") format("woff"); }
+
+
+/* Top */
+fieldset {
+  font-family: Arial;
+  position: relative;
+}
+
+#preview-wpf-content {
+  position: relative;
+  z-index: 1;
+}
+
+#payment_information {
+  display: none;
+}
+
+#switch-wpf-language select {
+  left: 250px;
+  position: absolute;
+  top: 15px;
+  width: 145px;
+}
+
+/*First and Lastname */
+select#gender {
+  display: block;
+  float: left;
+  width: 100px;
+}
+
+label:nth-of-type(2) {
+  display: none !important;
+}
+
+input[type="text"]:nth-of-type(1) {
+  margin-left: 10px;
+  width: 140px;
+}
+
+input[type="text"]:nth-of-type(3) {
+  margin-bottom: 50px;
+}
+
+/* Address */
+input[type="text"]:nth-of-type(5) {
+  display: block;
+  float: left;
+  width: 100px;
+}
+
+input[type="text"]:nth-of-type(6) {
+  display: block;
+  float: left;
+  margin-left: 10px;
+  width: 140px;
+}
+
+label:nth-of-type(7) {
+  display: none !important;
+}
+
+select:nth-of-type(2) {
+  display: inline;
+  margin-bottom: 50px !important;
+  position: relative;
+  width: 250px;
+}
+
+input[type="text"]:nth-of-type(9) {
+  margin-bottom: 100px;
+}
+
+/* Credit card */
+#brand_field {
+  margin: 30px 0 15px;
+}
+
+#brand_field img {
+  margin-left: 5px;
+  width: 40px;
+}
+
+#expiryMonth_div {
+  width: 115px;
+}
+
+#expiryYear_div {
+  width: 115px;
+}
+
+/* Amount */
+#amount_box_text {
+  display: none;
+}
+
+#amount_box {
+  color: #FF0000;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 0px;
+  top: 410px;
+}
+
+#amount_box > div {
+  left: 0px;
+  width: 300px;
+  top: 120px
+}
+
+#amount_box > div:after {
+  content: ' per';
+}
+
+/* Additional */
+#additional-1, #additional-2, #additional-3, #additional-4 {
+  border: solid 1px #d4d4d4;
+  height: 128px;
+  left: -10px;
+  position: absolute;
+  background-color: #fcfcfc;
+  width: 491px;
+  z-index: 0;
+}
+
+#additional-1 {
+  top: 70px;
+}
+
+#additional-2 {
+  top: 222px;
+}
+
+#additional-3 {
+  top: 373px;
+}
+
+#additional-4 {
+  height: 200px;
+  top: 574px;
+}
+
+#additional-4::after {
+  content: '* Optionale Angaben';
+  color: #0000FF;
+  font-size: 11px;
+  position: absolute;
+  top: 205px;
+}
+
+#additional-5 {
+  background: url("http://defshop.r.worldssl.net/images/image_server/templates/redesign/index/logo_final_260px.png");
+  height: 60px;
+  width: 260px;
+  left: -10px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 0;
+}
+
+#additional-6 {
+  font-size: 13px;
+  left: 155px;
+  position: absolute;
+  top: 532px;
+}
+
+#additional-6::after {
+  content: 'Kreditkarte';
+}
+
+#additional-7 {
+  background-image: url("http://defshop.r.worldssl.net/images/image_server/templates/redesign/sprites/flaggen-sprite01.png");
+  background-position: 0 -14px;
+  display: inline-block;
+  height: 14px;
+  left: 425px;
+  position: absolute;
+  top: 20px;
+  width: 22px;
+}
+
+/* Buttons */
+#cancelBtn, #submitBtn {
+  background-color: #fcfcfc;
+  border: solid 1px #cccccc;
+  text-transform: none;
+  margin-top: 35px;
+}
+
+#cancelBtn {
+  margin-left: 120px;
+}
+
+/* General */
+input[type="text"] {
+  font-size: 11px;
+  margin: 0 0 18px;
+}
+
+label, input, button, select, textarea {
+  line-height: 13px;
+  vertical-align: middle;
+}
+
+img {
+  vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  label {
+    clear: both;
+    float: none !important;
+    margin-bottom: 4px !important;
+  }
+
+  fieldset {
+    width: 80%;
+  }
+
+  label:nth-of-type(2) {
+    display: block !important;
+  }
+
+  label:nth-of-type(7) {
+    display: block !important;
+  }
+
+  select:nth-of-type(2) {
+    margin-bottom: 0px !important;
+  }
+
+  input[type="text"]:nth-of-type(9) {
+    margin-bottom: 50px !important;
+  }
+
+  #additional-1 {
+    display: none;
+  }
+
+  #additional-2 {
+    display: none;
+  }
+
+  #additional-3 {
+    display: none;
+  }
+
+  #additional-4 {
+    display: none;
+  }
+
+  #additional-6 {
+    top: 630px;
+  }
+
+  #additional-7 {
+    top: 40px;
+  }
+
+  #amount_box {
+    top: 510px;
+  }
+
+  input[type="text"] {
+    width: 100% !important;
+    margin-bottom: 10px !important;
+    margin-left: 0 !important;
+    padding: 0 !important;
+  }
+
+  select {
+    margin-bottom: 10px !important;
+    width: 100% !important;
+  }
+
+  #expiryMonth_div {
+    margin: 0;
+    width: 50%;
+  }
+
+  #expiryYear_div {
+    width: 50%;
+    margin: 0;
+  }
+
+  #cancelBtn {
+    margin-left: 0;
+    width: 50%;
+  }
+
+  #submitBtn {
+    margin-right: 0;
+    width: 50%;
+  }
+
+  #cashless_footer div {
+    top: 5px;
+  }
+}
+
