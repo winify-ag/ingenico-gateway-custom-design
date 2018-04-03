@@ -1,0 +1,19 @@
+#paymentForm {
+  input[type="text"] {
+    -webkit-appearance: none;
+    box-shadow: none;
+    text-indent: 10px;
+    color: #5a5968;
+    border: 1px solid $gray-01 !important;
+    background: transparent !important;
+
+    &::placeholder {
+      color: $gray-02 !important;
+    }
+
+    &:focus {
+      border: 1px solid $blue-01 !important;
+      outline: none;
+    }
+  }
+}

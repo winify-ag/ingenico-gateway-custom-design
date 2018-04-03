@@ -1,0 +1,32 @@
+#paymentForm {
+  #card_number,
+  #card_holder,
+  #card_secure_code{
+    width: 100%;
+  }
+
+  #brand_field {
+    margin-bottom: 30px !important;
+  }
+
+  fieldset {
+    margin: 0;
+    padding: 10px;
+  }
+
+  #tc {
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .validThrough {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+
+    .labelPosition {
+      width: 47%;
+    }
+  }
+}

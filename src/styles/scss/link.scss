@@ -1,0 +1,10 @@
+#paymentForm {
+  a {
+    color: $blue-01;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

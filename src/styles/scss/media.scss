@@ -1,0 +1,22 @@
+@media (max-width: 600px) {
+  #paymentForm {
+    fieldset {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #expiryMonth_div,
+    #expiryYear_div {
+      background: transparent;
+      width: 47%;
+    }
+
+    input[type="text"] {
+      margin-bottom: 30px !important;
+    }
+
+    select {
+      margin-bottom: 30px !important;
+    }
+  }
+}
