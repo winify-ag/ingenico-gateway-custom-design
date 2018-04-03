@@ -12,7 +12,7 @@
   }
 
   #brand_field {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
     input {
       margin-bottom: 0;
@@ -32,21 +32,11 @@
       display: inline-block;
       vertical-align: middle;
       margin-top: -2px;
-
-      + div {
-        display: inline-block;
-        margin-left: 5px;
-      }
+      margin-right: 5px;
     }
   }
 
-  .validThrough {
-    width: 100%;
-    display: inline-flex;
-    justify-content: space-between;
-
-    .labelPosition {
-      width: 47%;
-    }
+  span {
+    font-size: 14px;
   }
 }

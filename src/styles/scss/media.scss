@@ -5,18 +5,12 @@
       box-sizing: border-box;
     }
 
-    #expiryMonth_div,
-    #expiryYear_div {
-      background: transparent;
-      width: 47%;
-    }
-
     input[type="text"] {
-      margin-bottom: 30px !important;
+      margin-bottom: 20px !important;
     }
 
     select {
-      margin-bottom: 30px !important;
+      margin-bottom: 20px !important;
     }
   }
 }
