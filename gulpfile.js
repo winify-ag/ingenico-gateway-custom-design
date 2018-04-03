@@ -1,4 +1,3 @@
-
 const gulp = require('gulp')
 const gulpLoadPlugins = require('gulp-load-plugins')
 const browserSync = require('browser-sync').create()
@@ -7,7 +6,6 @@ const runSequence = require('run-sequence')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 const uncss = require('postcss-uncss')
-const rename = require('gulp-rename')
 
 const $ = gulpLoadPlugins()
 const reload = browserSync.reload
@@ -39,11 +37,13 @@ gulp.task('build', ['clean'], () => {
         uncss({html: ['src/*.html']})
       ])))
       .pipe($.if('*.css', $.rev()))
+      .pipe($.if('*.css', $.stripCssComments({preserve: false})))
+      .pipe($.if('*.css', $.cleanCss({format: 'beautify'})))
       .pipe(gulp.dest('dist'))  // save unminified version
       .pipe($.if(/\.css$/, $.postcss([
         cssnano({safe: true, autoprefixer: false})
       ])))
-      .pipe($.if(/\.css$/, rename({ extname: '.min.css' })))
+      .pipe($.if(/\.css$/, $.rename({ extname: '.min.css' })))
       .pipe($.revReplace())
       .pipe(gulp.dest('dist'))
   })
