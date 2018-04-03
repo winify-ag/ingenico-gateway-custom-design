@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ingenico gateway</title>
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" media="screen"
+        href="https://ops-proxy-demo.winify.com/assets/stylesheets/muume_wpf_vwfs_dd.css">
+  <script src="https://ops-proxy-demo.winify.com/assets/javascripts/jquery-2.1.0.min.js"></script>
+  <script src="https://ops-proxy-demo.winify.com/assets/javascripts/v2/utils.js"></script>
+  <script src="https://ops-proxy-demo.winify.com/assets/javascripts/v2/muume.js"></script>
+  <script src="https://ops-proxy-demo.winify.com/assets/javascripts/v2/ops.js"></script>
+  <script src="https://ops-proxy-demo.winify.com/assets/javascripts/v2/payment.js"></script>
+  <script src="https://ops-proxy-demo.winify.com/assets/javascripts/v2/paycentric-checker-dd.js"></script>
+
+  <link rel="stylesheet" href="styles/fonts.css">
+
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<script>
+  if ((/iPhone|iPod|iPad|Android|BlackBerry/).test(navigator.userAgent) == true) {
+    $(document).ready(function () {
+      $('html').addClass('mobile');
+    });
+  }
+
+  $(document).ready(function () {
+    if (!$('html').hasClass('mobile')) {
+      var bodyHeight = $('body').height();
+      $(window).on('resize', function () {
+        $('body').css('height', 'auto');
+        $('body').css('width', 'auto');
+      }).trigger('resize');
+    }
+
+    $(".labelPosition select, .labelPosition input").focusout(function(){
+      if($(this).val() != ""){
+        $(this).addClass("has-content");
+      }else{
+        $(this).removeClass("has-content");
+      }
+    })
+  });
+</script>
+
+<div id="blur">
+  <div id="loader">
+    <img src="https://ops-proxy-demo.winify.com/assets/graphics/loader_fast.gif"/>
+  </div>
+</div>
+<form id="paymentForm" method="post" action="payment">
+  <fieldset>
+    <div id="brand_field">
+      <label>Card type</label>
+      <input type="radio" name="card_type" value="VISA"/>
+      <span>Visa</span>
+      <input type="radio" name="card_type" value="MASTER"/>
+      <span>MasterCard</span>
+    </div>
+
+    <div class="labelPosition">
+      <input id="card_holder" NAME="card_holder" type="text" class="" placeholder="" value=""/>
+      <label>Holder name</label>
+    </div>
+
+    <div class="labelPosition">
+      <input id="card_number" NAME="card_number" type="text" class="" placeholder="" value=""/>
+      <label>Card number</label>
+    </div>
+
+
+<div class="validThrough">
+  <div class="labelPosition">
+    <select id="expiration_month" NAME="expiration_month">
+      <option selected="selected"></option>
+      <option value="1">01</option>
+      <option value="2">02</option>
+      <option value="3">03</option>
+      <option value="4">04</option>
+      <option value="5">05</option>
+      <option value="6">06</option>
+      <option value="7">07</option>
+      <option value="8">08</option>
+      <option value="9">09</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+    <label>Expiration Month</label>
+  </div>
+
+
+  <div class="labelPosition">
+    <select id="expiration_year" NAME="expiration_year">
+      <option selected="selected"></option>
+      <option value="2018">2018</option>
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+      <option value="2024">2024</option>
+    </select>
+    <label>Expiry year</label>
+  </div>
+</div>
+
+
+
+
+
+    <div class="labelPosition">
+      <input id="card_secure_code" NAME="card_secure_code" type="text" class="" placeholder="" value=""/>
+      <label>CVV CVC</label>
+    </div>
+
+    <div id="tc">
+      <input type="checkbox" id="tc-muume"/>
+      <div>
+        I accept the
+        <a href="https://muume.com/en/data-protection">Privacy Policy</a> and
+        <a href="https://muume.com/en/agb-muume/">T&C</a>
+      </div>
+    </div>
+
+    <br>
+    <!--<div id="legal_notice" style="color: #ff8000; clear: both;">Please check your credit card balance. We charged your credit card a small amount. To verify your credit card please write here the exact amount which we charged you.</div>-->
+    <br/>
+    <input type="button" id="addFunds" class="btn-primary" name="addFunds" value="Save"/>
+    <input type="hidden" id="ses_id" name="ses_id" value="541a77ad0a2d419aae6d51918c00d2e6">
+    <input type="hidden" id="language" name="language" value="en">
+  </fieldset>
+  <fieldset>
+    <div class="alert">
+      <!--<a class="close" data-dismiss="alert">Close</a> -->
+    </div>
+  </fieldset>
+</form>
+</body>
+</html>
