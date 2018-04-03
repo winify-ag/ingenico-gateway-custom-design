@@ -7,18 +7,15 @@
 
   #expiryYear_div, #expiryMonth_div {
     width: 50%;
-    box-sizing: border-box;
+    float: left;
   }
 
   #expiryMonth_div {
-    float: right;
-    padding-left: 10px;
+    padding-right: 10px;
   }
 
   #expiryYear_div {
-    padding-right: 10px;
-
-    /*margin 0 for ipad*/
-    margin: 0;
+    padding-left: 10px;
+    margin-left: 0;
   }
 }

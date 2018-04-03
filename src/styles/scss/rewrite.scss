@@ -1,8 +1,23 @@
+// Mixin itself
+@mixin clearfix() {
+  &::before {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
 #paymentForm {
   margin: 0 auto;
 
+  * {
+    box-sizing: border-box;
+  }
+
   label {
-    float: none;
+    @include clearfix;
+    margin-top: 10px;
+    margin-bottom: 7px;
   }
 
   #card_number,
@@ -12,7 +27,7 @@
   }
 
   #brand_field {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
     input {
       margin-bottom: 0;
@@ -25,8 +40,9 @@
   }
 
   #tc {
-    display: block;
+    clear: both;
     font-size: 14px;
+    padding: 1em 0;
 
     > input[type="checkbox"] {
       display: inline-block;
