@@ -17,8 +17,8 @@ gulp.task('styles', () => {
     .pipe($.plumber())
     .pipe($.if(dev, $.sourcemaps.init()))
     .pipe($.sass.sync({
-      outputStyle:  'expanded',
-      precision:    10,
+      outputStyle: 'expanded',
+      precision: 10,
       includePaths: ['.']
     }).on('error', $.sass.logError))
     .pipe($.postcss([
@@ -37,6 +37,8 @@ gulp.task('build', ['clean'], () => {
         uncss({html: ['src/*.html']}),
         cssnano({safe: true, autoprefixer: false})
       ])))
+      .pipe($.if('*.css', $.rev()))
+      .pipe($.revReplace())
       .pipe(gulp.dest('dist'))
   })
 })
@@ -47,7 +49,7 @@ gulp.task('serve', () => {
   runSequence(['clean'], ['styles'], () => {
     browserSync.init({
       notify: false,
-      port:   9000,
+      port: 9000,
       server: {
         baseDir: ['.tmp', 'src', '.']
       }
@@ -64,7 +66,7 @@ gulp.task('serve', () => {
 gulp.task('serve:dist', ['build'], () => {
   browserSync.init({
     notify: false,
-    port:   9000,
+    port: 9000,
     server: {
       baseDir: ['dist']
     }
