@@ -7,7 +7,8 @@
   },
   "scripts": {
     "start": "gulp serve",
-    "build": "gulp build"
+    "build": "gulp build",
+    "serve:dist": "gulp serve:dist"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -42,5 +43,8 @@
         "single"
       ]
     }
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.0"
   }
 }
