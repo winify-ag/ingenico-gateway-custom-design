@@ -49,7 +49,7 @@ gulp.task('serve', () => {
       notify: false,
       port:   9000,
       server: {
-        baseDir: ['.tmp', 'src']
+        baseDir: ['.tmp', 'src', '.']
       }
     })
 
@@ -61,7 +61,7 @@ gulp.task('serve', () => {
   })
 })
 
-gulp.task('serve:dist', ['default'], () => {
+gulp.task('serve:dist', ['build'], () => {
   browserSync.init({
     notify: false,
     port:   9000,

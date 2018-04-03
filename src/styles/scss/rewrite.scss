@@ -1,4 +1,6 @@
 #paymentForm {
+  margin: 0 auto;
+
   #card_number,
   #card_holder,
   #card_secure_code{
@@ -6,7 +8,11 @@
   }
 
   #brand_field {
-    margin-bottom: 30px !important;
+    margin-bottom: 30px;
+
+    input {
+      margin-bottom: 0;
+    }
   }
 
   fieldset {
@@ -16,8 +22,17 @@
 
   #tc {
     font-size: 14px;
-    display: inline-flex;
-    align-items: center;
+
+    > input[type="checkbox"] {
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: -2px;
+
+      + div {
+        display: inline-block;
+        margin-left: 5px;
+      }
+    }
   }
 
   .validThrough {
