@@ -29,113 +29,79 @@
 <script>
   if ((/iPhone|iPod|iPad|Android|BlackBerry/).test(navigator.userAgent) == true) {
     $(document).ready(function () {
-      $('html').addClass('mobile');
-    });
+      $('html').addClass('mobile')
+    })
   }
-
   $(document).ready(function () {
     if (!$('html').hasClass('mobile')) {
-      var bodyHeight = $('body').height();
+      var bodyHeight = $('body').height()
       $(window).on('resize', function () {
-        $('body').css('height', 'auto');
-        $('body').css('width', 'auto');
-      }).trigger('resize');
+        $('body').css('height', 'auto')
+        $('body').css('width', 'auto')
+      }).trigger('resize')
     }
-
-    $(".labelPosition select, .labelPosition input").focusout(function(){
-      if($(this).val() != ""){
-        $(this).addClass("has-content");
-      }else{
-        $(this).removeClass("has-content");
-      }
-    })
-  });
+  })
 </script>
-
 <div id="blur">
   <div id="loader">
-    <img src="https://ops-proxy-demo.winify.com/assets/graphics/loader_fast.gif"/>
+    <img src="https://ops-proxy-demo.winify.com/assets/graphics/loader_fast.gif" />
   </div>
 </div>
 <form id="paymentForm" method="post" action="payment">
   <fieldset>
     <div id="brand_field">
       <label>Card type</label>
-      <input type="radio" name="card_type" value="VISA"/>
+      <input type="radio" name="card_type" value="VISA" />
       <span>Visa</span>
-      <input type="radio" name="card_type" value="MASTER"/>
+      <input type="radio" name="card_type" value="MASTER" />
       <span>MasterCard</span>
     </div>
-
-    <div class="labelPosition">
-      <input id="card_holder" NAME="card_holder" type="text" class="" placeholder="" value=""/>
-      <label>Holder name</label>
+    <label>Holder name</label>
+    <input id="card_holder" NAME="card_holder" type="text" class="shadow" placeholder="Holder name" value="" />
+    <label>Card number</label>
+    <input id="card_number" NAME="card_number" type="text" class="shadow" placeholder="Card number" value="" />
+    <label>Valid through</label>
+    <div id="expiryMonth_div" class="dropdown">
+      <select id="expiration_month" NAME="expiration_month">
+        <option selected="selected">Expiry month</option>
+        <option value="1">01</option>
+        <option value="2">02</option>
+        <option value="3">03</option>
+        <option value="4">04</option>
+        <option value="5">05</option>
+        <option value="6">06</option>
+        <option value="7">07</option>
+        <option value="8">08</option>
+        <option value="9">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
     </div>
-
-    <div class="labelPosition">
-      <input id="card_number" NAME="card_number" type="text" class="" placeholder="" value=""/>
-      <label>Card number</label>
+    <div id="expiryYear_div" class="dropdown">
+      <select id="expiration_year" NAME="expiration_year">
+        <option selected="selected">Expiry year</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+      </select>
     </div>
-
-
-<div class="validThrough">
-  <div class="labelPosition">
-    <select id="expiration_month" NAME="expiration_month">
-      <option selected="selected"></option>
-      <option value="1">01</option>
-      <option value="2">02</option>
-      <option value="3">03</option>
-      <option value="4">04</option>
-      <option value="5">05</option>
-      <option value="6">06</option>
-      <option value="7">07</option>
-      <option value="8">08</option>
-      <option value="9">09</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-      <option value="12">12</option>
-    </select>
-    <label>Expiration Month</label>
-  </div>
-
-
-  <div class="labelPosition">
-    <select id="expiration_year" NAME="expiration_year">
-      <option selected="selected"></option>
-      <option value="2018">2018</option>
-      <option value="2019">2019</option>
-      <option value="2020">2020</option>
-      <option value="2021">2021</option>
-      <option value="2022">2022</option>
-      <option value="2023">2023</option>
-      <option value="2024">2024</option>
-    </select>
-    <label>Expiry year</label>
-  </div>
-</div>
-
-
-
-
-
-    <div class="labelPosition">
-      <input id="card_secure_code" NAME="card_secure_code" type="text" class="" placeholder="" value=""/>
-      <label>CVV CVC</label>
-    </div>
-
+    <label>cvv cvc</label>
+    <input id="card_secure_code" NAME="card_secure_code" type="text" class="shadow" placeholder="cvv cvc" value="" />
     <div id="tc">
-      <input type="checkbox" id="tc-muume"/>
-      <div>
-        I accept the
-        <a href="https://muume.com/en/data-protection">Privacy Policy</a> and
-        <a href="https://muume.com/en/agb-muume/">T&C</a>
-      </div>
+      <input type="checkbox" id="tc-muume" />I accept the
+      <a href="https://muume.com/en/data-protection">Privacy Policy</a> and
+      <a href="https://muume.com/en/agb-muume/">T&C</a>
     </div>
-
-    <br>
     <!--<div id="legal_notice" style="color: #ff8000; clear: both;">Please check your credit card balance. We charged your credit card a small amount. To verify your credit card please write here the exact amount which we charged you.</div>-->
-    <br/>
-    <input type="button" id="addFunds" class="btn-primary" name="addFunds" value="Save"/>
+    <br />
+    <input type="button" id="addFunds" name="addFunds" value="Submit" />
     <input type="hidden" id="ses_id" name="ses_id" value="541a77ad0a2d419aae6d51918c00d2e6">
     <input type="hidden" id="language" name="language" value="en">
   </fieldset>

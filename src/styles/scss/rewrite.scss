@@ -1,6 +1,10 @@
 #paymentForm {
   margin: 0 auto;
 
+  label {
+    float: none;
+  }
+
   #card_number,
   #card_holder,
   #card_secure_code{
@@ -21,6 +25,7 @@
   }
 
   #tc {
+    display: block;
     font-size: 14px;
 
     > input[type="checkbox"] {
