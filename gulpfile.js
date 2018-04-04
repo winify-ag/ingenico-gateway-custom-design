@@ -34,17 +34,17 @@ gulp.task('build', ['clean'], () => {
     return gulp.src('src/index.html')
       .pipe($.useref({searchPath: ['.tmp', 'src', '.']}))
       .pipe($.if(/\.css$/, $.postcss([
-        uncss({html: ['src/*.html']})
+        uncss({html: ['src/*.html']}),
       ])))
-      .pipe($.if('*.css', $.rev()))
+      // .pipe($.if('*.css', $.rev()))
       .pipe($.if('*.css', $.stripCssComments({preserve: false})))
-      .pipe($.if('*.css', $.cleanCss({format: 'beautify'})))
-      .pipe(gulp.dest('dist'))  // save unminified version
+      // .pipe($.if('*.css', $.cleanCss({format: 'beautify'})))
+      // .pipe(gulp.dest('dist'))  // save unminified version
       .pipe($.if(/\.css$/, $.postcss([
-        cssnano({safe: true, autoprefixer: false})
+        cssnano({safe: false, autoprefixer: true})
       ])))
-      .pipe($.if(/\.css$/, $.rename({ extname: '.min.css' })))
-      .pipe($.revReplace())
+      // .pipe($.if(/\.css$/, $.rename({ extname: '.min.css' })))
+      // .pipe($.revReplace())
       .pipe(gulp.dest('dist'))
   })
 })
