@@ -22,7 +22,7 @@ gulp.task('styles', () => {
       includePaths: ['.']
     }).on('error', $.sass.logError))
     .pipe($.postcss([
-      autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']})
+      autoprefixer({browsers: ['> 1%', 'last 2 versions']})
     ]))
     .pipe($.if(dev, $.sourcemaps.write()))
     .pipe(gulp.dest('.tmp/styles'))
@@ -41,7 +41,7 @@ gulp.task('build', ['clean'], () => {
       // .pipe($.if('*.css', $.cleanCss({format: 'beautify'})))
       // .pipe(gulp.dest('dist'))  // save unminified version
       .pipe($.if(/\.css$/, $.postcss([
-        cssnano({safe: false, autoprefixer: true})
+        cssnano({safe: false, autoprefixer: false})
       ])))
       // .pipe($.if(/\.css$/, $.rename({ extname: '.min.css' })))
       // .pipe($.revReplace())

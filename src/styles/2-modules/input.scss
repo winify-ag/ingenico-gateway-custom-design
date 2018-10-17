@@ -4,15 +4,15 @@
     box-shadow: none;
     text-indent: 10px;
     color: #5a5968;
-    border: 1px solid $gray-01 !important;
+    border: 1px solid $gray-lighter !important;
     background: transparent !important;
 
     &::placeholder {
-      color: $gray-02 !important;
+      color: $gray-light !important;
     }
 
     &:focus {
-      border: 1px solid $blue-01 !important;
+      border: 1px solid $primary !important;
       outline: none;
     }
   }

@@ -13,6 +13,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "browser-sync": "^2.2.1",
+    "canvas": "^1.6.13",
     "cssnano": "^3.10.0",
     "del": "^2.2.0",
     "gulp": "^3.9.0",
