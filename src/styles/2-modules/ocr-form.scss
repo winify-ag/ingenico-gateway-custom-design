@@ -1,0 +1,127 @@
+.ocr-wv-camera-area {
+  max-width: 490px;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+}
+
+.ocr-wv-form-area {
+  background-color: #f7f7f7;
+  position: relative;
+  padding-bottom: 100px;
+
+  #paymentForm {
+    .ocr-wv-form-card-number,
+    .ocr-wv-form-expiry-date,
+    .ocr-wv-form-cvv,
+    .ocr-wv-form-card-holder {
+      @include clearfix;
+      position: relative;
+
+      label {
+        padding-left: 10px;
+      }
+
+      input {
+        @include textfield;
+        background-color: #fff !important;
+        width: 100%;
+        border-radius: 0;
+      }
+    }
+
+    .ocr-wv-form-card-number {
+      #card_number {
+        padding-right: 50px;
+      }
+
+      #brand_logo {
+        position: absolute;
+        right: 5px;
+        top: 41px;
+
+        input {
+          display: none;
+        }
+
+        img {
+          width: 40px;
+          display: block;
+        }
+      }
+    }
+
+    .ocr-wv-form-expiry-date,
+    .ocr-wv-form-cvv {
+      width: 50%;
+      float: left;
+    }
+
+    .ocr-wv-form-expiry-date {
+      padding-right: 10px;
+    }
+
+    .ocr-wv-form-cvv {
+      padding-left: 10px;
+    }
+
+    .ocr-wv-form-card-holder {
+      clear: left;
+    }
+
+    .ocr-wv-form-buttons {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background-color: #2761a2;
+      text-align: center;
+
+      &:before {
+        content: '';
+        width: 1px;
+        height: 100px;
+      }
+
+      #takeAPicture,
+      #scanAgain,
+      #registrationCardBtn,
+      &:before {
+        display: inline-block;
+        vertical-align: middle;
+
+        &[disabled] {
+          cursor: not-allowed;
+          opacity: .6;
+        }
+      }
+
+      #takeAPicture {
+        width: 70px;
+        height: 70px;
+        border: none;
+        background: no-repeat 50% 50% url('../images/camera-btn.png');
+        margin-top: 0;
+      }
+
+      #scanAgain,
+      #registrationCardBtn {
+        width: 150px;
+        height: 40px;
+        padding-left: 10px;
+        color: #2761a2;
+        border: none;
+        border-radius: 20px;
+      }
+
+      #scanAgain {
+        background: no-repeat 15px 50% url('../images/scan-again-btn.png') #fff;
+      }
+
+      #registrationCardBtn {
+        margin-left: 10px;
+        background: no-repeat 15px 50% url('../images/save-card-btn.png') #fff;
+      }
+    }
+  }
+}

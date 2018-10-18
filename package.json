@@ -1,9 +1,12 @@
 {
-  "name": "ingenico-gateway-custom-design",
-  "version": "0.0.1",
-  "private": true,
+  "name": "@igodorogea/ingenico-gateway-custom-design",
+  "version": "1.0.1",
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/igodorogea/ingenico-gateway-custom-design.git"
   },
   "scripts": {
     "start": "gulp serve",

@@ -1,0 +1,5 @@
+#paymentForm {
+  input[type="text"] {
+    @include textfield();
+  }
+}

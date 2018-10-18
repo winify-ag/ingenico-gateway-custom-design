@@ -1,16 +1,3 @@
-// Mixin itself
-@mixin clearfix() {
-  &::before {
-    display: block;
-    content: "";
-    clear: both;
-  }
-}
-
-body {
-  background-color: #fff;
-}
-
 #paymentForm {
   margin: 0 auto;
 

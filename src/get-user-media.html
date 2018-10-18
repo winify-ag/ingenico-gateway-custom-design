@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <link rel="stylesheet" media="screen"
+        href="https://cdn.rawgit.com/igodorogea/paycentrick-gateway-custom-design/v1.0.1/dist/main.css">
+  <link rel="stylesheet" media="screen" href="../../../assets/stylesheets/muume_wpf_vwfs_cc.css">
+  <link rel="stylesheet" media="screen" href="../../../assets/stylesheets/ocr.css">
+  <script src="../../../assets/javascripts/jquery-2.1.0.min.js"></script>
+  <script src="../../../assets/javascripts/cleave.min.js"></script>
+  <script src="../../../assets/javascripts/v2/utils-ocr.js"></script>
+  <script src="../../../assets/javascripts/v2/muume.js"></script>
+  <script src="../../../assets/javascripts/v2/ops.js"></script>
+  <script src="../../../assets/javascripts/v2/payment-ocr.js"></script>
+  <script src="../../../assets/javascripts/v2/ocr.js"></script>
+</head>
+<body>
+<script>  if ((/iPhone|iPod|iPad|Android|BlackBerry/).test(navigator.userAgent) == true) { $(document).ready(function () { $('html').addClass('mobile') }) }
+$(document).ready(function () {
+  if (!$('html').hasClass('mobile')) {
+    var bodyHeight = $('body').height()
+    $(window).on('resize', function () {
+      $('body').css('height', 'auto')
+      $('body').css('width', 'auto')
+    }).trigger('resize')
+  }
+  var ua = navigator.userAgent
+  if (ua.indexOf('Android') >= 0) {
+    var androidversion = parseFloat(ua.slice(ua.indexOf('Android') + 8))
+    if (androidversion < 5.0) {
+      $('#openCamera span').text('Your device does not support this feature')
+      $('#openCamera').show()
+    }
+  }
+  var scaleFactor = 8
+  var video = document.getElementById('video')
+  var canvas = document.getElementById('canvas')
+  var context = canvas.getContext('2d')
+  $('#video').css('width', '100%')
+  var rotateValue = 1
+  $('#takenPicture').click(function () { $('#takenPicture').css('transform', 'rotate(' + ((rotateValue++ % 4) * 90) + 'deg)') })
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    console.log('window.inner' + window.innerWidth + ' ' + window.innerHeight)
+    navigator.mediaDevices.getUserMedia({video: {facingMode: 'environment'}}).then(function (stream) {
+      video.srcObject = stream
+      video.play()
+      video.onloadedmetadata = function () {
+        context.canvas.width = $('#video').width()
+        context.canvas.height = $('#video').height()
+      }
+    }).catch(function (err) { alert('Error ' + err + ', User agent: ' + navigator.userAgent) })
+    $('#scanAgain').click(function () {
+      $('#ocrMessage').html()
+      $('#video').show()
+      $('#takeAPicture').show()
+      $('#scanAgain').hide()
+      $('#registrationCardBtn').hide()
+      $('#previewPicture').hide()
+    })
+    $('#takeAPicture').click(function () {
+      var video = document.getElementById('video')
+      context.drawImage(video, 0, 0, $('#video').width(), $('#video').height())
+      var dataUrl = canvas.toDataURL('image/jpeg', 0.5)
+      var dataBlob = dataURItoBlob(dataUrl)
+      var formData = new FormData()
+      formData.append('file', dataBlob, 'cc.jpg')
+      $('#takenPicture').css('background-image', 'url("' + dataUrl + '")')
+      $('#previewPicture').hide()
+      $('#ocrLoader').show()
+      $('#ocrInProgressMessage').show()
+      $.ajax({
+        type: 'POST',
+        url: OCR_SERVER_URL,
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function (result) {
+          $('#takenPicture').css('width', $('#video').width()).css('height', $('#video').height()).css('background-position', '0px 0px')
+          $('#takeAPicture').hide()
+          $('#scanAgain').show()
+          if (result.result == '') {
+            $('#ocrMessage').html('Image could not be recognized, try again')
+            $('#ocrMessage').show()
+          } else {
+            $('#ocrMessage').hide()
+            var cardData = parseReturnedOcrData(result)
+            if (fillForm(cardData) == false) { $('#ocrMessage').show() } else { $('#takenPicture').css('width', cardData['position_width'] + 'px').css('height', cardData['position_height'] + 'px').css('background-position', '-' + cardData['position_x'] + 'px ' + '-' + cardData['position_y'] + 'px') }
+          }
+        },
+        error: function (result) { $('#ocrMessage').html('Error occured! Please try again later.').show() },
+        complete: function () {
+          $('#video').hide()
+          $('#previewPicture').show()
+          $('#registrationCardBtn').show()
+          $('#ocrInProgressMessage').hide()
+          $('#ocrDoneMessage').show()
+          setTimeout(function () {
+            $('#ocrLoader').hide()
+            window.scrollTo(0, document.body.scrollHeight)
+          }, 2000)
+        }
+      })
+    })
+  } else {
+    $('#openCamera').show()
+    $('#scanAgain').show()
+    $('#registrationCardBtn').show()
+    $('#takeAPicture').hide()
+    $('#video').hide()
+    $('#scanAgain').click(function () { $('#data').click() })
+    $('#openCamera').click(function () {
+      $('#data').click()
+      $(this).hide()
+    })
+    $('#data').change(function () { readURL(this) })
+    $('#sendOCR').click(function (e) {
+      e.preventDefault()
+      if (!$('#data').val()) {
+        alert('Take a picture first')
+        return
+      }
+      var form = $('#ocrForm')[0]
+      var formData = new FormData(form)
+      $('#previewPicture').hide()
+      $('#ocrLoader').show()
+      $('#ocrInProgressMessage').show()
+      $('#ocrDoneMessage').hide()
+      $('#ocrMessage').hide()
+      $.ajax({
+        type: 'POST',
+        url: OCR_SERVER_URL,
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function (result) {
+          if (result.result == '') {
+            $('#ocrMessage').html('Image could not be recognized, try again')
+            $('#ocrMessage').show()
+          } else {
+            cardData = parseReturnedOcrData(result)
+            if (fillForm(cardData) == false) { $('#ocrMessage').show() } else {
+              $('#takenPicture').css('width', cardData['position_width'] + 'px')
+              $('#takenPicture').css('height', cardData['position_height'] + 'px')
+              $('#takenPicture').css('background-position', '-' + cardData['position_x'] + 'px ' + '-' + cardData['position_y'] + 'px')
+              $('#takenPicture').css('background-repeat', 'no-repeat')
+            }
+          }
+        },
+        error: function (result) { $('#ocrMessage').html('Error occured! Please try again later.').show() },
+        complete: function () {
+          $('#previewPicture').show()
+          $('#ocrInProgressMessage').hide()
+          $('#ocrDoneMessage').show()
+          setTimeout(function () {
+            $('#ocrLoader').hide()
+            window.scrollTo(0, document.body.scrollHeight)
+          }, 2000)
+        }
+      })
+    })
+  }
+})</script>
+<div class="ocr-wv-camera-area">
+  <div id="openCamera"><span>Click to open camera</span></div>
+  <div id="ocrLoader">
+    <span id="ocrInProgressMessage">
+      Please wait... image recognition in progress<br />
+      <img src="../../../assets/graphics/ajaxLoader.gif">
+    </span>
+    <span id="ocrDoneMessage">DONE! Check your data with picture!</span>
+  </div>
+
+  <form id="ocrForm"><input type="file" id="data" name="file" accept="image/*;capture=camera" required capture>
+    <button id="sendOCR" type="submit"></button>
+  </form>
+  <video id="video" autoplay playsinline></video>
+  <canvas id="canvas" style="display: none;"></canvas>
+  <div id="previewPicture"><span id="takenPicture" src="#" alt="Your image" /></div>
+</div>
+
+<div class="ocr-wv-form-area">
+  <form id="paymentForm" method="post" action="payment">
+    <fieldset>
+      <input type="hidden" id="ses_id" name="ses_id" value="3bc5915c705646cbb76ee7f6137ccec9">
+      <input type="hidden" id="language" name="language" value="en;q=0.9">
+      <div id="alert"></div>
+      <div id="ocrMessage"></div>
+
+      <label>Card number</label> <!-- Card number -->
+      <div id="brand_logo">
+        <input type="radio" value="VISA" name="card_type"><img
+        src="../../../assets/graphics/cc_brands/visa_logo.png" alt="">
+        <input type="radio" value="MASTER" name="card_type"><img
+        src="../../../assets/graphics/cc_brands/master_logo.png" alt="">
+        <input type="radio" value="AMEX" name="card_type"><img
+        src="../../../assets/graphics/cc_brands/amex_logo.png" alt="">
+        <input type="radio" value="DINERS" name="card_type"><img
+        src="../../../assets/graphics/cc_brands/diners_logo.png" alt="">
+        <input type="radio" value="DISCOVER" name="card_type"><img
+        src="../../../assets/graphics/cc_brands/discover_logo.png" alt="">
+        <input type="radio" value="JCB" name="card_type"><img
+        src="../../../assets/graphics/cc_brands/jcb_logo.png" alt="">
+        <input type="radio" value="UNIONPAY" name="card_type"><img
+        src="../../../assets/graphics/cc_brands/unionpay_logo.png" alt="">
+        <input type="radio" value="MAESTRO" name="card_type"><img
+        src="../../../assets/graphics/cc_brands/maestro_logo.png" alt="">
+      </div>
+      <input id="card_number" name="card_number" type="tel" class="shadow" value="">
+
+      <label>Expiry date</label>
+      <div id="expiryMonthYear_div">
+        <input type="tel" id="expiration_month_year" name="expiration_month_year" />
+      </div>
+
+      <label>CVV</label>
+      <input id="card_secure_code" name="card_secure_code" type="tel" class="shadow" value="">
+
+      <label>Name on card</label>
+      <input id="card_holder" name="card_holder" type="text" class="shadow" value="">
+
+      <div id="tc" style="visibility: hidden;">
+        <input type="checkbox" id="tc-muume" checked=""> I accept the
+        <a href="https://muume.com/en/data-protection">Privacy Policy</a>
+        and
+        <a href="https://muume.com/en/agb-muume/">T&amp;C</a>
+      </div>
+
+      <br>
+      <input type="button" id="takeAPicture" value="" />
+      <input type="button" id="scanAgain" value="Scan again" />
+      <input type="button" id="registrationCardBtn" name="submitBtn" value="Save card" />
+    </fieldset>
+
+    <fieldset>
+      <div class="alert">
+        <!--<a class="close" data-dismiss="alert">Close</a> -->
+      </div>
+    </fieldset>
+  </form>
+</div>
+</body>
+</html>

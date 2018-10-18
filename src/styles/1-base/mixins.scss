@@ -1,0 +1,32 @@
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin textfield() {
+  appearance: none;
+  box-shadow: none;
+  text-indent: 10px;
+  color: #5a5968;
+  border: 1px solid $gray-lighter !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  font-size: 14px;
+  height: 33px !important;
+  margin: 0 0 15px;
+
+  &::placeholder {
+    color: $gray-light !important;
+  }
+
+  &:focus {
+    border: 1px solid $primary !important;
+    outline: none;
+  }
+}
