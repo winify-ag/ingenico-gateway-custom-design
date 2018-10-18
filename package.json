@@ -1,6 +1,6 @@
 {
   "name": "@igodorogea/ingenico-gateway-custom-design",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "engines": {
     "node": ">=6"
   },
