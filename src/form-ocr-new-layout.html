@@ -24,19 +24,21 @@
     </span>
     <span id="ocrDoneMessage">DONE! Check your data with picture!</span>
   </div>
-
-  <form id="ocrForm"><input type="file" id="data" name="file" accept="image/*;capture=camera" required capture>
+  <form id="ocrForm">
+    <input type="file" id="data" name="file" accept="image/*;capture=camera" required capture>
     <button id="sendOCR" type="submit"></button>
   </form>
   <video id="video" autoplay playsinline></video>
   <canvas id="canvas" style="display: none;"></canvas>
-  <div id="previewPicture"><span id="takenPicture" src="#" alt="Your image" /></div>
+  <div id="previewPicture">
+    <span id="takenPicture" src="#" alt="Your image" />
+  </div>
 </div>
 
 <div class="ocr-wv-form-area">
   <form id="paymentForm" method="post" action="payment">
     <fieldset>
-      <input type="hidden" id="ses_id" name="ses_id" value="3bc5915c705646cbb76ee7f6137ccec9">
+      <input type="hidden" id="ses_id" name="ses_id" value="04ca791305a44305bda383a3b40fdd80">
       <input type="hidden" id="language" name="language" value="en;q=0.9">
       <div id="alert"></div>
       <div id="ocrMessage"></div>
@@ -68,6 +70,8 @@
         <label>Expiry date</label>
         <div id="expiryMonthYear_div">
           <input type="tel" id="expiration_month_year" name="expiration_month_year" class="shadow" />
+          <input type="hidden" id="expiration_month" name="expiration_month" />
+          <input type="hidden" id="expiration_year" name="expiration_year" />
         </div>
       </div>
 
@@ -82,7 +86,8 @@
       </div>
 
       <div id="tc" style="visibility: hidden;">
-        <input type="checkbox" id="tc-muume" checked=""> I accept the
+        <input type="checkbox" id="tc-muume" checked="">
+        I accept the
         <a href="https://muume.com/en/data-protection">Privacy Policy</a>
         and
         <a href="https://muume.com/en/agb-muume/">T&amp;C</a>

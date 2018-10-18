@@ -39,6 +39,10 @@
         right: 5px;
         top: 41px;
 
+        @media (max-width: 600px) {
+          top: 38px;
+        }
+
         input {
           display: none;
         }
@@ -106,9 +110,9 @@
 
       #scanAgain,
       #registrationCardBtn {
-        width: 150px;
+        width: 140px;
         height: 40px;
-        padding-left: 10px;
+        padding-left: 20px;
         color: #2761a2;
         border: none;
         border-radius: 20px;
