@@ -24,11 +24,14 @@
         margin-bottom: 4px;
       }
 
-      input {
+      input:not([type="checkbox"]):not([type="radio"]) {
         @include textfield;
         margin-bottom: 5px;
         width: 100%;
-        border-radius: 0;
+
+        &.error-border-color {
+          border-color: $brand-danger !important;
+        }
       }
     }
 
@@ -43,7 +46,7 @@
         right: 5px;
         top: 33px;
 
-        input {
+        input[type="radio"] {
           display: none;
         }
 
