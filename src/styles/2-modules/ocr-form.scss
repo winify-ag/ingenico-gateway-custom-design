@@ -21,7 +21,7 @@
       label {
         padding-left: 10px;
         margin-top: 5px;
-        margin-bottom: 5px;
+        margin-bottom: 4px;
       }
 
       input {
@@ -41,11 +41,7 @@
       #brand_logo {
         position: absolute;
         right: 5px;
-        top: 41px;
-
-        @media (max-width: 600px) {
-          top: 38px;
-        }
+        top: 33px;
 
         input {
           display: none;
@@ -53,7 +49,6 @@
 
         img {
           width: 40px;
-          display: block;
         }
       }
     }
