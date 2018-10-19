@@ -31,7 +31,7 @@ gulp.task('styles', () => {
 
 gulp.task('build', ['clean'], () => {
   runSequence(['styles', 'copy-images'], () => {
-    return gulp.src('src/index.html')
+    return gulp.src(['src/index.html', 'src/form-ocr-new-layout.html'])
       .pipe($.useref({searchPath: ['.tmp', 'src', '.']}))
       .pipe($.if(/\.css$/, $.postcss([
         uncss({html: ['src/index.html', 'src/form-ocr-new-layout.html']}),
