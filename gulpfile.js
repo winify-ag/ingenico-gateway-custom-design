@@ -34,7 +34,7 @@ gulp.task('build', ['clean'], () => {
     return gulp.src('src/index.html')
       .pipe($.useref({searchPath: ['.tmp', 'src', '.']}))
       .pipe($.if(/\.css$/, $.postcss([
-        uncss({html: ['src/index.html', 'form-ocr-new-layout.html']}),
+        uncss({html: ['src/index.html', 'src/form-ocr-new-layout.html']}),
       ])))
       // .pipe($.if('*.css', $.rev()))
       .pipe($.if('*.css', $.stripCssComments({preserve: false})))
