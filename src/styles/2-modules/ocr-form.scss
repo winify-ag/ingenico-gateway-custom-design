@@ -76,6 +76,7 @@
 
         img {
           width: 40px;
+          border: none;
         }
       }
     }
@@ -138,7 +139,7 @@
         width: 90%;
         height: 100%;
         border: none;
-        background: no-repeat 50% 50% url('../images/camera-btn.png');
+        background: no-repeat 50% 50% url('../images/camera-btn.svg');
         margin-top: 0;
       }
 
@@ -153,12 +154,12 @@
       }
 
       #scanAgain {
-        background: no-repeat 15px 50% url('../images/scan-again-btn.png') #fff;
+        background: no-repeat 15px 50% url('../images/scan-again-btn.svg') #fff;
       }
 
       #registrationCardBtn {
         margin-left: 10px;
-        background: no-repeat 15px 50% url('../images/save-card-btn.png') #fff;
+        background: no-repeat 15px 50% url('../images/save-card-btn.svg') #fff;
       }
     }
   }
