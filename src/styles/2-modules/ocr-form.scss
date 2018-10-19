@@ -1,10 +1,17 @@
 .ocr-wv-camera-area {
   max-width: 490px;
   margin: 0 auto;
+
+  #ocrLoader {
+    width: 100%;
+    right: auto;
+    bottom: auto;
+    height: 200px;
+  }
 }
 
 .ocr-wv-form-area {
-  padding-bottom: 110px;
+  padding-bottom: 100px;
 
   #alert {
     display: none;
@@ -48,7 +55,7 @@
 
       input:not([type="checkbox"]):not([type="radio"]) {
         @include textfield;
-        margin-bottom: 5px;
+        margin-bottom: 5px !important;
         width: 100%;
 
         &.error-border-color {
