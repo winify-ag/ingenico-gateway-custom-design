@@ -4,7 +4,7 @@
 }
 
 .ocr-wv-form-area {
-  position: relative;
+  padding-bottom: 110px;
 
   #alert {
     margin-bottom: 5px;
@@ -45,6 +45,8 @@
         position: absolute;
         right: 5px;
         top: 33px;
+        width: 40px;
+        height: 25px;
 
         input[type="radio"] {
           display: none;
@@ -75,15 +77,13 @@
     }
 
     .ocr-wv-form-buttons {
-      //position: absolute;
-      //bottom: 0;
-      //left: 0;
-      //right: 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 100px;
       background-color: #2761a2;
       text-align: center;
-
-      margin: 20px -10px -10px -10px;
 
       &:before {
         content: '';
