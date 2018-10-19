@@ -3,6 +3,11 @@
     border-color: $gray-lighter;
     height: 35px !important;
     text-indent: 8px;
+    background-color: #fff;
+  }
+
+  .dropdown {
+    background-color: transparent;
   }
 
   #expiryYear_div, #expiryMonth_div {
