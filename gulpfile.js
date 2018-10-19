@@ -30,7 +30,7 @@ gulp.task('styles', () => {
 })
 
 gulp.task('build', ['clean'], () => {
-  runSequence(['styles'], () => {
+  runSequence(['styles', 'copy-images'], () => {
     return gulp.src('src/index.html')
       .pipe($.useref({searchPath: ['.tmp', 'src', '.']}))
       .pipe($.if(/\.css$/, $.postcss([
@@ -50,6 +50,8 @@ gulp.task('build', ['clean'], () => {
 })
 
 gulp.task('clean', del.bind(null, ['.tmp']))
+
+gulp.task('copy-images', () => gulp.src('src/images/**/*').pipe(gulp.dest('dist/images')))
 
 gulp.task('serve', () => {
   runSequence(['clean'], ['styles'], () => {
