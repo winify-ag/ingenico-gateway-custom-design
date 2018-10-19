@@ -12,7 +12,8 @@
   },
   "files": [
     "dist",
-    "src/styles"
+    "src/styles",
+    "src/images"
   ],
   "scripts": {
     "start": "gulp serve",

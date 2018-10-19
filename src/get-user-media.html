@@ -18,10 +18,12 @@
     <input type="file" id="data" name="file" accept="image/*;capture=camera" required capture>
     <button id="sendOCR" type="submit"></button>
   </form>
-  <video id="video" autoplay playsinline></video>
+  <div id="videoWrapper">
+    <video id="video" autoplay playsinline></video>
+  </div>
   <canvas id="canvas" style="display: none;"></canvas>
   <div id="previewPicture">
-    <span id="takenPicture" src="#" alt="Your image" />
+    <span id="takenPicture" />
   </div>
 </div>
 
@@ -75,7 +77,7 @@
         <input id="card_holder" name="card_holder" type="text" class="shadow" value="">
       </div>
 
-      <div id="tc" style="visibility: hidden;">
+      <div id="tc" style="display: none;">
         <input type="checkbox" id="tc-muume" checked="">
         I accept the
         <a href="https://muume.com/en/data-protection">Privacy Policy</a>
@@ -86,13 +88,7 @@
       <div class="ocr-wv-form-buttons">
         <input type="button" id="takeAPicture" value="" />
         <input type="button" id="scanAgain" value="Scan again" />
-        <input type="button" id="registrationCardBtn" name="submitBtn" value="Save card" disabled />
-      </div>
-    </fieldset>
-
-    <fieldset>
-      <div class="alert">
-        <!--<a class="close" data-dismiss="alert">Close</a> -->
+        <input type="button" id="registrationCardBtn" name="submitBtn" value="Save card" />
       </div>
     </fieldset>
   </form>
