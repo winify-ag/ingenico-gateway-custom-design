@@ -4,38 +4,20 @@
   min-height: 220px;
   margin: 0 auto;
 
-  #openCamera {
+  #openCamera,
+  #ocrLoader {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(#000, .7);
+    color: #fff;
+    z-index: 1000;
+    text-align: center;
 
-    span {
+    > span {
       position: absolute;
       top: 50%;
-      transform: translate3d(0, -50%, 0);
-
-      &:before {
-        content: '';
-        background: url('../images/camera-btn.svg') no-repeat 50% 50%;
-        display: block;
-        width: 100%;
-        height: 64px;
-        background-size: 60px;
-        margin-bottom: 20px;
-      }
-    }
-  }
-
-  #ocrLoader {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(#000, .45);
-
-    #ocrInProgressMessage,
-    #ocrDoneMessage {
-      position: absolute;
-      top: 50%;
+      left: 0;
+      width: 100%;
       transform: translate3d(0, -50%, 0);
 
       &:before {
@@ -48,6 +30,20 @@
         margin-bottom: 10px;
       }
     }
+  }
+
+  #openCamera {
+    background-color: rgba(#000, .7);
+
+    span:before {
+        background-image: url('../images/camera-btn.svg');
+        background-size: 60px;
+        margin-bottom: 20px;
+    }
+  }
+
+  #ocrLoader {
+    background-color: rgba(#000, .45);
 
     #ocrInProgressMessage {
       img {
