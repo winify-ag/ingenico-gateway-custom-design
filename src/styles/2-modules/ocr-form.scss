@@ -35,10 +35,14 @@
   #openCamera {
     background-color: rgba(#000, .7);
 
-    span:before {
+    span {
+      display: block;
+
+      &:before {
         background-image: url('../images/camera-btn.svg');
         background-size: 60px;
         margin-bottom: 20px;
+      }
     }
   }
 
