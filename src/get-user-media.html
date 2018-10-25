@@ -9,7 +9,7 @@
   <script src="//ops-proxy-demo.winify.com/assets/javascripts/v2/muume.js"></script>
   <script src="//ops-proxy-demo.winify.com/assets/javascripts/v2/ops.js"></script>
   <script src="//ops-proxy-demo.winify.com/assets/javascripts/v2/payment-ocr.js"></script>
-  <script src="http://ops-proxy-demo.winify.com/assets/javascripts/v2/ocr.js"></script>
+  <script src="//ops-proxy-demo.winify.com/assets/javascripts/v2/ocr.js"></script>
   <script>
     if ((/iPhone|iPod|iPad|Android|BlackBerry/).test(navigator.userAgent) == true) {
       $(document).ready(function () { $('html').addClass('mobile') })
@@ -254,5 +254,44 @@
     </fieldset>
   </form>
 </div>
+<script>
+  (function ($) {
+    nativeCameraPrepareView();
+    $('#takeAPicture')
+      .add($('#openCamera'))
+      .click(function () {
+        nativeCameraInProgress();
+        setTimeout(function () {
+          nativeCameraOcrProcessDone()
+        }, 2000)
+      })
+
+    function nativeCameraPrepareView() {
+      $('#openCamera').show();
+      $('#takeAPicture').show();
+      $('#videoWrapper').hide();
+      $('#scanAgain').hide();
+      $('#registrationCardBtn').hide();
+      $('#ocrDoneMessage').hide();
+    }
+
+    function nativeCameraInProgress() {
+      $('#openCamera').hide();
+      $('#previewPicture').show();
+      $('#ocrLoader').show();
+      $('#ocrDoneMessage').hide();
+      $('#ocrInProgressMessage').show();
+      $('#alert').hide();
+    }
+
+    function nativeCameraOcrProcessDone() {
+      $('#takeAPicture').hide();
+      $('#scanAgain').show();
+      $('#registrationCardBtn').show();
+      $('#ocrInProgressMessage').hide();
+      $('#ocrDoneMessage').show();
+    }
+  })(jQuery)
+</script>
 </body>
 </html>

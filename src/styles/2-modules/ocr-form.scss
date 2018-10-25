@@ -1,7 +1,15 @@
+$camera-height: 200px;
+$footer-height: 80px;
+
+#videoWrapper,
+#previewPicture {
+  height: $camera-height;
+}
+
 .ocr-wv-camera-area {
   position: relative;
   max-width: 490px;
-  min-height: 220px;
+  min-height: $camera-height;
   margin: 0 auto;
 
   #openCamera,
@@ -66,7 +74,8 @@
 }
 
 .ocr-wv-form-area {
-  padding-bottom: 100px;
+  padding-bottom: $footer-height;
+  min-height: calc(100% - #{$camera-height + $footer-height});
 
   #alert {
     display: none;
@@ -160,69 +169,72 @@
     .ocr-wv-form-card-holder {
       clear: left;
     }
+  }
+}
 
-    .ocr-wv-form-buttons {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 100px;
-      background-color: #2761a2;
-      text-align: center;
+.ocr-wv-form-buttons {
+  //position: fixed;
+  //z-index: 10;
+  //bottom: 0;
+  //left: 0;
+  //right: 0;
+  margin-top: -$footer-height;
+  height: $footer-height;
+  background-color: #2761a2;
+  text-align: center;
 
-      &:before {
-        content: '';
-        width: 1px;
-        height: 100px;
-      }
+  &:before {
+    content: '';
+    width: 1px;
+    height: $footer-height;
+  }
 
-      #takeAPicture,
-      #scanAgain,
-      #registrationCardBtn,
-      &:before {
-        display: inline-block;
-        vertical-align: middle;
-      }
+  #takeAPicture,
+  #scanAgain,
+  #registrationCardBtn,
+  &:before {
+    display: inline-block;
+    vertical-align: middle;
+  }
 
-      #takeAPicture,
-      #scanAgain,
-      #registrationCardBtn {
-        &:focus {
-          outline: none;
-        }
-
-        &[disabled] {
-          cursor: not-allowed;
-          opacity: .6;
-        }
-      }
-
-      #takeAPicture {
-        width: 90%;
-        height: 100%;
-        border: none;
-        background: no-repeat 50% 50% url('../images/camera-btn.svg');
-        margin-top: 0;
-      }
-
-      #scanAgain,
-      #registrationCardBtn {
-        width: 140px;
-        height: 40px;
-        padding-left: 20px;
-        color: #2761a2;
-        border: none;
-        border-radius: 20px;
-      }
-
-      #scanAgain {
-        background: no-repeat 15px 50% url('../images/scan-again-btn.svg') #fff;
-      }
-
-      #registrationCardBtn {
-        margin-left: 10px;
-        background: no-repeat 15px 50% url('../images/tick-icon-blue.svg') #fff;
-      }
+  #takeAPicture,
+  #scanAgain,
+  #registrationCardBtn {
+    &:focus {
+      outline: none;
     }
+
+    &[disabled] {
+      cursor: not-allowed;
+      opacity: .6;
+    }
+  }
+
+  #takeAPicture {
+    width: 90%;
+    height: 100%;
+    border: none;
+    background: no-repeat 50% 50% url('../images/camera-btn.svg');
+    background-size: $footer-height - 20px;
+    margin-top: 0;
+  }
+
+  #scanAgain,
+  #registrationCardBtn {
+    width: 140px;
+    height: 40px;
+    padding-left: 20px;
+    color: #2761a2;
+    border: none;
+    border-radius: 20px;
+  }
+
+  #scanAgain {
+    background: no-repeat 15px 50% url('../images/scan-again-btn.svg') #fff;
+  }
+
+  #registrationCardBtn {
+    margin-left: 10px;
+    background: no-repeat 15px 50% url('../images/tick-icon-blue.svg') #fff;
   }
 }
