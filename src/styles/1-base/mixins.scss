@@ -29,3 +29,18 @@
     outline: none;
   }
 }
+
+@mixin btn() {
+  cursor: default;
+  //touch-action: manipulation;
+  //white-space: nowrap;
+  //user-select: none;
+  //-webkit-appearance: button;
+  //-webkit-tap-highlight-color: transparent;
+
+  &,
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
