@@ -7,7 +7,7 @@ $footer-height: 80px;
 }
 
 .ocr-wv-camera-area {
-  position: relative;
+  //position: relative;
   max-width: 490px;
   min-height: $camera-height;
   margin: 0 auto;
@@ -20,6 +20,36 @@ $footer-height: 80px;
     color: #fff;
     z-index: 1000;
     text-align: center;
+  }
+
+  #openCamera {
+    background-color: #222;
+
+    > div {
+      // disable inherited styles
+      bottom: auto;
+      right: auto;
+      margin: 0;
+      // end disable
+      top: 50%;
+      transform: translateY(-50%);
+      box-sizing: border-box;
+      width: 100%;
+
+      > img {
+        margin: 0 15%;
+      }
+
+      > span {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-top: 40px;
+      }
+    }
+  }
+
+  #ocrLoader {
+    background-color: rgba(#000, .45);
 
     > span {
       position: absolute;
@@ -38,24 +68,6 @@ $footer-height: 80px;
         margin-bottom: 10px;
       }
     }
-  }
-
-  #openCamera {
-    background-color: rgba(#000, .7);
-
-    span {
-      display: block;
-
-      &:before {
-        background-image: url('../images/camera-btn.svg');
-        background-size: 60px;
-        margin-bottom: 20px;
-      }
-    }
-  }
-
-  #ocrLoader {
-    background-color: rgba(#000, .45);
 
     #ocrInProgressMessage {
       img {

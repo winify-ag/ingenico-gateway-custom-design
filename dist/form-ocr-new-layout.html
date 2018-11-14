@@ -7,6 +7,7 @@
   <title>Ingenico OCR gateway</title>
 
   <link rel="stylesheet" href="styles/fonts.css">
+  <link rel="stylesheet" media="screen" href="//ops-proxy-demo.winify.com/assets/stylesheets/muume_wpf_vwfs_cc.css">
   <link rel="stylesheet" href="//ops-proxy-demo.winify.com/assets/stylesheets/ocr.css">
 
   <link rel="stylesheet" href="styles/main.css">
@@ -31,16 +32,21 @@
   </div>
 </div>
 <div class="ocr-wv-camera-area">
-  <div id="openCamera"><span>Click to open camera</span></div>
+  <div id="openCamera">
+    <div>
+      <img src="//ops-proxy-demo.winify.com/assets/graphics/phone.svg" />
+      <span>Please, turn your phone in landscape mode<br />and place your card horizontally.<br />Tap the screen when ready.</span>
+    </div>
+  </div>
   <div id="ocrLoader">
-    <span id="ocrInProgressMessage">
-      Please wait... image recognition in progress<br />
-      <img src="../../../assets/graphics/ajaxLoader.gif">
-    </span>
+              <span id="ocrInProgressMessage">Please wait... image recognition in progress
+                  <br />
+                  <img src="//ops-proxy-demo.winify.com/assets/graphics/ajaxLoader.gif">
+              </span>
     <span id="ocrDoneMessage">DONE! Check your data with picture!</span>
   </div>
   <form id="ocrForm">
-    <input type="file" id="data" name="file" accept="image/*;capture=camera" required capture>
+    <input type="file" id="data" name="file" accept="image/*;capture=camera" required capture >
     <button id="sendOCR" type="submit"></button>
   </form>
   <div id="videoWrapper">
@@ -48,19 +54,18 @@
   </div>
   <canvas id="canvas" style="display: none;"></canvas>
   <div id="previewPicture">
-    <span id="takenPicture"></span>
+    <span id="takenPicture" />
   </div>
 </div>
-
 <div class="ocr-wv-form-area">
-  <form id="paymentForm" method="post" action="payment">
+  <form id="paymentForm" method="post" action="payment" >
     <fieldset>
       <input type="hidden" id="ses_id" name="ses_id" value="aea9076997a74efd93e4abde5aacd82f">
       <input type="hidden" id="language" name="language" value="en">
       <div id="alert"></div>
-
       <div class="ocr-wv-form-card-number">
-        <label>Card number</label> <!-- Card number -->
+        <label>Card number</label>
+        <!-- Card number -->
         <div id="brand_logo">
           <input type="radio" value="VISA" name="card_type">
           <img src="//ops-proxy-demo.winify.com/assets/graphics/cc_brands/visa_logo.png" alt="">
@@ -81,7 +86,6 @@
         </div>
         <input id="card_number" name="card_number" type="tel" class="shadow" value="" />
       </div>
-
       <div class="ocr-wv-form-expiry-date">
         <label>Expiry date</label>
         <div id="expiryMonthYear_div">
@@ -90,28 +94,22 @@
           <input type="hidden" id="expiration_year" name="expiration_year" />
         </div>
       </div>
-
       <div class="ocr-wv-form-cvv">
         <label>CVV</label>
         <input id="card_secure_code" name="card_secure_code" type="tel" class="shadow" value="">
       </div>
-
       <div class="ocr-wv-form-card-holder">
         <label>Name on card</label>
         <input id="card_holder" name="card_holder" type="text" class="shadow" value="">
       </div>
-
       <div id="tc" style="display: none;">
-        <input type="checkbox" id="tc-muume" checked="">
-        I accept the
-        <a href="https://muume.com/en/data-protection">Privacy Policy</a>
-        and
+        <input type="checkbox" id="tc-muume" checked="">        I accept the
+        <a href="https://muume.com/en/data-protection">Privacy Policy</a> and
         <a href="https://muume.com/en/agb-muume/">T&amp;C</a>
       </div>
     </fieldset>
   </form>
 </div>
-
 <div class="ocr-wv-form-buttons">
   <input type="button" id="takeAPicture" value="" />
   <input type="button" id="scanAgain" value="Scan again" style="display: none" />
