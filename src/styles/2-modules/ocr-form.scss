@@ -11,16 +11,6 @@ $footer-height: 80px;
   min-height: $camera-height;
   margin: 0 auto;
 
-  #openCamera,
-  #ocrLoader {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    color: #fff;
-    z-index: 1000;
-    text-align: center;
-  }
-
   #openCamera {
     background-color: #222;
 
@@ -48,6 +38,12 @@ $footer-height: 80px;
   }
 
   #ocrLoader {
+    position: absolute;
+    width: 100%;
+    height: $camera-height;
+    color: #fff;
+    z-index: 1000;
+    text-align: center;
     background-color: rgba(#000, .45);
 
     > span {
