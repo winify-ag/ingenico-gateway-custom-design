@@ -1,7 +1,6 @@
 $camera-height: 200px;
 $footer-height: 80px;
 
-#videoWrapper,
 #previewPicture {
   height: $camera-height;
 }
@@ -214,15 +213,6 @@ $footer-height: 80px;
       cursor: not-allowed;
       opacity: .6;
     }
-  }
-
-  #takeAPicture {
-    width: 98%;
-    height: 100%;
-    border: none;
-    background: no-repeat 50% 50% url('../images/camera-btn.svg');
-    background-size: $footer-height - 20px;
-    margin-top: 0;
   }
 
   #scanAgain,
