@@ -241,7 +241,7 @@ $footer-height: 80px;
 .ocr-wv-form-buttons {
   margin-top: -$footer-height;
   height: $footer-height;
-  background-color: $brand-primary;
+  background-color: $brand-secondary;
   text-align: center;
 
   &:before {
@@ -277,17 +277,17 @@ $footer-height: 80px;
     max-width: 48%;
     height: 36px;
     padding: 0 18px 0 34px;
-    color: $brand-primary;
+    color: $brand-secondary;
     border: none;
     border-radius: 20px;
   }
 
   #scanAgain {
-    background: no-repeat 15px 50% url('../images/scan-again-btn.svg') #fff;
+    background: no-repeat 15px 50% url('../images/scan-again-btn-black.svg') #fff;
   }
 
   #registrationCardBtn {
     margin-left: 10px;
-    background: no-repeat 15px 50% url('../images/tick-icon-blue.svg') #fff;
+    background: no-repeat 15px 50% url('../images/tick-icon-black.svg') #fff;
   }
 }
